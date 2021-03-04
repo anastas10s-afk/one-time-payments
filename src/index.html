@@ -4,66 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Accept Donations on the Jamstack Using Stripe</title>
+    <title>Testing one-time payments, using Stripe</title>
   </head>
   <body>
     <header>
-      <a href="/" rel="home">Accept Donations on the Jamstack Using Stripe</a>
+      <a href="/" rel="home">* Testing one-time payments, using Stripe *</a>
     </header>
 
     <main>
-      <h1>Donate To Our Cause!</h1>
+      <h1>Hey there!</h1>
       <p>
-        This demo is in test mode. That means you can check out using any of the
-        <a href="https://stripe.com/docs/testing#cards">test card numbers</a>.
+        This demo is in test mode.
       </p>
 
-      <button id="donate-button" role="link">
-        Donate $5
+      <button id="pay-button" role="link">
+        Make payment
       </button>
 
       <div id="error-message"></div>
     </main>
 
     <footer>
-      <p>
-        Based on an
-        <a
-          href="https://www.learnwithjason.dev/accept-donations-on-jamstack-sites"
-        >
-          episode of <em>Learn With Jason</em>
-        </a>
-        ·
-        <a href="https://jason.af/egghead/stripe-donations">
-          watch the video course
-        </a>
-        ·
-        <a
-          href="https://www.netlify.com/blog/2020/04/28/add-a-donation-button-start-accepting-money-on-jamstack-sites/?utm_source=demo&amp;utm_medium=stripe-donations-jl&amp;utm_campaign=devex"
-          >read the tutorial</a
-        >
-        ·
-        <a href="https://github.com/jlengstorf/stripe-donations">
-          source code
-        </a>
-      </p>
     </footer>
 
     <script src="https://js.stripe.com/v3"></script>
     <script>
       (function () {
         // initialize Stripe using your publishable key
-        const stripe = Stripe('pk_test_Uczh5PNhB0aS0MZHnm2fkODM00MSoV8j3h');
+        const stripe = Stripe('pk_test_51IQfhzKAQa92imc1O0Pg7trhXjKInIbGj42croKa1j0QFcCBnEd8UbmWrw6uvqGf7GkdUtvRSEtnFfsCoYtKP9sc00cpqtfIfb');
 
         // find the button and error message elements
-        const checkoutButton = document.getElementById('donate-button');
+        const checkoutButton = document.getElementById('pay-button');
         const errorMessage = document.getElementById('error-message');
 
         // on click, send the user to Stripe Checkout to process the donation
         checkoutButton.addEventListener('click', () => {
           stripe
             .redirectToCheckout({
-              items: [{ sku: 'sku_H7BEsLD3uMHLVB', quantity: 1 }],
+              items: [{ ID: 'prod_J3UTZTmjiKJdDm', quantity: 1 }],
               successUrl: `${window.location.origin}/success.html`,
               cancelUrl: window.location.origin,
             })
