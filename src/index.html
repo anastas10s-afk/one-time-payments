@@ -41,7 +41,7 @@
         checkoutButton.addEventListener('click', () => {
           stripe
             .redirectToCheckout({
-              items: [{ id: 'prod_J3UTZTmjiKJdDm', quantity: 1 }],
+              items: [{ sku: 'sku_H7BEsLD3uMHLVB', quantity: 1 }],
               successUrl: `${window.location.origin}/success.html`,
               cancelUrl: window.location.origin,
             })
